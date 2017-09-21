@@ -133,12 +133,12 @@ if __name__ == '__main__':
     # Print Results
     # ------------------
     for i,c in enumerate([1,2]):
-        print
-        print 'Interval Val: ',ci[i]
-        print '   Expected Low:', mu - c*sigma
-        print '      Calculated Low:', results[i][0]
-        print '   Expected High:', mu + c*sigma
-        print '      Calculated Hight:', results[i][1]
+        print()
+        print('Interval Val: ',ci[i])
+        print('   Expected Low:', mu - c*sigma)
+        print('      Calculated Low:', results[i][0])
+        print('   Expected High:', mu + c*sigma)
+        print('      Calculated Hight:', results[i][1])
 
-    print
+    print()
 

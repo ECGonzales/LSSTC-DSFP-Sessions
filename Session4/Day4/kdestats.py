@@ -47,14 +47,14 @@ def findkdeval(kde, val, guess=None,tol=1e-6, maxiter=1000,verbose=False):
             val = np.tile(val,kde.d)
 
         for dim in range(kde.d):
-            print dim
+            print(dim)
             tempkde = gaussian_kde(kde.dataset[dim,:])
             retvals[dim] = findkdeval(tempkde, val[dim],tol=tol, guess=guess,maxiter=maxiter)
     else:
         max_location = kde_max(kde)
         maxval = kde(max_location)
         if val>maxval:
-            print "Value entered (%01.3g) is greater than KDE's maximum value (%01.3g)" % (val,maxval)
+            print( "Value entered (%01.3g) is greater than KDE's maximum value (%01.3g)" % (val,maxval))
             return max_location
         
         iter = 0
@@ -76,9 +76,9 @@ def findkdeval(kde, val, guess=None,tol=1e-6, maxiter=1000,verbose=False):
             kdepos = kde(pos)
             kdeneg = kde(neg)
             if verbose and (iter/10)==(iter/10.):
-                print "iter, val, pos, neg, kdepos,kdeneg,guess, step"
+                print("iter, val, pos, neg, kdepos,kdeneg,guess, step")
             if verbose:
-                print "%i %01.6g %01.6g %01.6g %01.6g %01.6g %01.6g" %(iter, val, pos, neg,kdepos,kdeneg, step)
+                print("%i %01.6g %01.6g %01.6g %01.6g %01.6g %01.6g" %(iter, val, pos, neg,kdepos,kdeneg, step))
             dval_pos = abs(kdepos-val)
             dval_neg = abs(kdeneg-val)
             if dval_pos<dval: # we're closer than we were!
@@ -98,7 +98,7 @@ def findkdeval(kde, val, guess=None,tol=1e-6, maxiter=1000,verbose=False):
             iter += 1
         retvals = guess
         if iter>maxiter:
-            print "Exceeded maximum number of iterations (%i) without convergance" % maxiter
+            print("Exceeded maximum number of iterations (%i) without convergance" % maxiter)
 
     return retvals
 
@@ -121,7 +121,7 @@ def conflevel(kde, frac, ftol=1e-6, tol=1e-6, usespline=False, verbose=False,max
     if kde.d>1:
         ret = []
         for ii in range(kde.d):
-            if verbose: print ii,'/',kde.d
+            if verbose: print(ii,'/',kde.d)
             ret.append(conflevel(gaussian_kde(kde.dataset[ii]),frac,ftol=ftol,tol=tol,usespline=usespline,verbose=verbose,maxiter=maxiter))
         return ret
     else:
@@ -142,7 +142,7 @@ def conflevel(kde, frac, ftol=1e-6, tol=1e-6, usespline=False, verbose=False,max
             kdelow = kde(low_limit)
             guess = 2*median_value-low_limit
             if verbose:
-                print "kdelow,guess",kdelow,guess
+                print("kdelow,guess",kdelow,guess)
             high_limit = findkdeval(kde, kdelow, tol=tol, guess=guess,verbose=verbose,maxiter=maxiter)
             if usespline:
                 enclosed_fraction = kde0.integrate_box_1d(low_limit, high_limit)
