@@ -2,7 +2,3 @@
 	path = Session4/KIPAC-StatisticalMethods/
 	url = https://github.com/KIPAC/StatisticalMethods.git
 	branch = dsfp_sep17
-[submodule "Session4/KIPAC-StatisticalMethods"]
-	path = Session4/KIPAC-StatisticalMethods
-	url = https://github.com:KIPAC/StatisticalMethods
-	branch = dsfp_sep17
