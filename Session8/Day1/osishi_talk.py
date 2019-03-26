@@ -87,7 +87,7 @@ ax_residual.set_xlabel('x')
 ax_residual.set_ylabel('residual')
 
 # an attribute with __ i.e average__ means don't fuck with this attribute for reals. __ won't have it appear in the list
-# when hitting tab
+# when hitting tab. pep8 wants them before i.e .__average
 
 
 # Maybe I want to make a class for the similar figures in papers.
